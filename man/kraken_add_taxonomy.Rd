@@ -9,12 +9,11 @@ kraken_add_taxonomy(x)
 \arguments{
 \item{x}{A data frame containing the fields "rank_code", "scientific_name",
 and "rank_level" with rows in the original order of the Kraken sample
-report(s), as returned by \code{read_kraken_reports(files, complete = FALSE, ...)}.}
+report(s), as returned by \code{read_kraken_reports()}.}
 }
 \description{
 This function requires that rows are in the order of the original Kraken
-report. Thus, it cannot be used on data frames returned by \code{read_kraken()}
-using the \code{complete = TRUE} option.
+report, so cannot be used after \code{kraken_complete()}.
 }
 \details{
 You can apply this function to a data frame of Kraken reports for multiple

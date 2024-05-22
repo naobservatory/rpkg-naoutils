@@ -7,6 +7,8 @@
 kraken_complete(x, explicit = TRUE)
 }
 \arguments{
+\item{x}{A data frame of Kraken sample reports}
+
 \item{explicit}{Boolean passed to \code{tidyr::complete()}}
 }
 \description{

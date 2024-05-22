@@ -86,6 +86,7 @@ kraken_col_names <- c(
 #' missing in some samples. Note: The resulting data frame will no longer be
 #' compatible with `kraken_add_taxonomy()`.
 #' 
+#' @param x A data frame of Kraken sample reports
 #' @param explicit Boolean passed to `tidyr::complete()`
 #'
 #' @export
@@ -111,6 +112,10 @@ kraken_complete <- function(x, explicit = TRUE) {
     )
 }
 
+#' Remove nonstandard ranks from Kraken reports
+#'
+#' @param x A data frame of Kraken sample reports
+#'
 #' @export
 kraken_remove_nonstandard_ranks <- function(x) {
   stopifnot(inherits(x, "data.frame"))
@@ -122,8 +127,7 @@ kraken_remove_nonstandard_ranks <- function(x) {
 #' Add full taxonomy path to a Kraken report data frame
 #'
 #' This function requires that rows are in the order of the original Kraken
-#' report. Thus, it cannot be used on data frames returned by `read_kraken()`
-#' using the `complete = TRUE` option. 
+#' report, so cannot be used after `kraken_complete()`. 
 #'
 #' You can apply this function to a data frame of Kraken reports for multiple
 #' samples; however, doing so is typically inefficient due to needing to
@@ -133,8 +137,7 @@ kraken_remove_nonstandard_ranks <- function(x) {
 #'
 #' @param x A data frame containing the fields "rank_code", "scientific_name",
 #'   and "rank_level" with rows in the original order of the Kraken sample
-#'   report(s), as returned by `read_kraken_reports(files, complete = FALSE,
-#'   ...)`.
+#'   report(s), as returned by `read_kraken_reports()`.
 #'
 #' @export
 kraken_add_taxonomy <- function(x) {
