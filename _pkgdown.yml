@@ -1,0 +1,11 @@
+url: https://naobservatory.github.io/rpkg-naoutils
+template:
+  bootstrap: 5
+reference:
+- title: "Import qPCR results"
+  contents: 
+  - starts_with("read_qpcr")
+  - clean_common
+- title: "Import Kraken results"
+  contents: 
+  - contains("kraken")
